@@ -1,10 +1,7 @@
-import React from "react";
+import React from 'react'
 
 function TheFooter() {
-  return (
-    <div>The footer</div>
-  )
+  return <footer className={'center'}>The footer</footer>
 }
-
 
 export default TheFooter

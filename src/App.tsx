@@ -6,11 +6,13 @@ import TheFooter from './components/TheFooter/TheFooter'
 
 const App: FC = () => {
   return (
-    <>
+    <div className={'h-screen flex flex-col'}>
       <TheHeader />
-      <AppRoutes />
+      <main className={'flex-grow mt-16'}>
+        <AppRoutes />
+      </main>
       <TheFooter />
-    </>
+    </div>
   )
 }
 

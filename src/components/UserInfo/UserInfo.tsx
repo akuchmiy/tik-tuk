@@ -9,7 +9,7 @@ const UserInfo: FC = () => {
   // @ts-ignore
   const { userId } = useParams<Params>()
 
-  return <div>SomeShit {userId} </div>
+  return <div>Hi there 2 {userId} </div>
 }
 
 export default UserInfo
