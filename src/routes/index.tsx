@@ -1,16 +1,13 @@
-import {FC} from "react";
-import {
-  Routes,
-  Route
-} from "react-router-dom";
-import App from "../App";
-
+import { FC } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import FeedList from '../components/FeedList/FeedList'
+import UserInfo from '../components/UserInfo/UserInfo'
 
 const AppRoutes: FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<App/>}>
-      </Route>
+      <Route path="/" element={<FeedList />} />
+      <Route path="/user/:userId" element={<UserInfo />} />
     </Routes>
   )
 }
