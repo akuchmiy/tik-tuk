@@ -6,14 +6,14 @@ import FeedService from '../../services/FeedService'
 
 const TrendingFeedList: FC = () => {
   const query = useQuery()
+  const queryParam = useMemo(() => query.get('query'), [query])
   const [feedList, setFeedList] = useState<Feed[]>([])
 
-  const [newTitle, isHashtag] = useMemo(() => {
-    const queryParam = query.get('query')
-    if (!queryParam) return ['Feed', false]
+  const newTitle = useMemo(() => {
+    if (!queryParam) return 'Feed'
 
-    return [`Trending for ${queryParam}`, true]
-  }, [query])
+    return `Trending for ${queryParam}`
+  }, [queryParam])
 
   useEffect(() => {
     document.title = newTitle
