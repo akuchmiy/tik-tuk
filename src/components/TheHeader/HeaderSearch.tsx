@@ -11,9 +11,11 @@ const HeaderSearch: FC = () => {
     if (!query.value) return ['', 'Enter hashtag or username']
 
     if (query.value.startsWith('#')) {
-      const withoutHash = query.value.slice(1)
+      const withoutHash = query.value.replace(/#+/, '')
       return [`/?query=${withoutHash}`, `Get trending news by hashtag`]
-    } else return [`/user/${query.value}`, 'Find user by username']
+    } else {
+      return [`/user/${query.value}`, 'Find user by username']
+    }
   }, [query])
 
   function findByQuery(e: FormEvent) {

@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { useParams } from 'react-router-dom'
-import FeedList from '../FeedList/FeedList'
+import UserFeedList from '../FeedList/UserFeedList'
 
 interface Params {
   username: string | undefined
@@ -13,7 +13,7 @@ const UserInfo: FC = () => {
   return (
     <>
       <div>Hi there 2 {username} </div>
-      <FeedList username={username} />
+      <UserFeedList username={username} />
     </>
   )
 }

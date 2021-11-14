@@ -1,12 +1,12 @@
 import { FC } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import FeedList from '../components/FeedList/FeedList'
 import UserInfo from '../components/UserInfo/UserInfo'
+import TrendingFeedList from '../components/FeedList/TrendingFeedList'
 
 const AppRoutes: FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<FeedList />} />
+      <Route path="/" element={<TrendingFeedList />} />
       <Route path="/user/:username" element={<UserInfo />} />
     </Routes>
   )

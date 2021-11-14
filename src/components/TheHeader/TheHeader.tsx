@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Profiler } from 'react'
 import { Link } from 'react-router-dom'
 import HeaderSearch from './HeaderSearch'
 
@@ -17,7 +17,14 @@ function TheHeader() {
         >
           <Link to="/">Tik Tuk</Link>
         </div>
-        <HeaderSearch />
+        <Profiler
+          id={'search'}
+          onRender={function () {
+            console.log(arguments)
+          }}
+        >
+          <HeaderSearch />
+        </Profiler>
       </div>
     </header>
   )
