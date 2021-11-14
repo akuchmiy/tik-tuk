@@ -9,8 +9,7 @@ html {
 }
 
 body {
-    min-height: 100vh;
-    overflow: hidden;
+    @apply bg-pink-50 min-h-screen dark:bg-gray-600;
     color: #212121;
 }
 

@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { Feed } from '../../models/Feed'
+import FeedItem from '../FeedItem/FeedItem'
 
 interface FeedListProps {
   feedList: Feed[]
@@ -7,8 +8,10 @@ interface FeedListProps {
 
 const FeedList: FC<FeedListProps> = ({ feedList }) => {
   return (
-    <div className={'lg:flex justify-center items-center'}>
-      This is feed list {feedList.length}
+    <div className={'grid sm:grid-cols-2 xl:grid-cols-3 gap-3'}>
+      {feedList.map((feed) => (
+        <FeedItem key={feed.id} feed={feed} />
+      ))}
     </div>
   )
 }

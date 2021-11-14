@@ -6,7 +6,7 @@ function TheHeader() {
   return (
     <header
       className={
-        'h-16 bg-pink-50 p-4 rounded-br-3xl rounded-bl-3xl border-b-2 border-pink-200 fixed top-0 left-0 w-full dark:bg-gray-700 dark:text-pink-400'
+        'h-16 bg-pink-50 p-4 rounded-br-3xl rounded-bl-3xl border-b-2 border-pink-200 fixed top-0 left-0 w-full dark:bg-gray-700 dark:text-pink-400 shadow-md z-50'
       }
     >
       <div className="h-full main-container mx-auto flex justify-between items-center">
