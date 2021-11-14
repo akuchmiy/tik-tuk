@@ -12,7 +12,7 @@ const TrendingFeedList: FC = () => {
   const newTitle = useMemo(() => {
     if (!queryParam) return 'Feed'
 
-    return `Trending for "${queryParam}\"`
+    return `Trending for "${queryParam}"`
   }, [queryParam])
 
   useEffect(() => {

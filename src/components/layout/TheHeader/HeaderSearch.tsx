@@ -29,7 +29,6 @@ const HeaderSearch: FC = () => {
       onSubmit={findByQuery}
       className={'center relative overflow-hidden w-1/2 md:w-1/3'}
     >
-      {/*TODO extract input*/}
       <BasicInput
         aria-label={ariaNavigateTo}
         {...query.use()}
@@ -42,7 +41,8 @@ const HeaderSearch: FC = () => {
           type={'submit'}
           aria-label={ariaNavigateTo}
           className={
-            'absolute right-2 border-2 border-pink-200 bg-pink-100 p-1 rounded-xl w-8 h-8'
+            'absolute right-2 border-2 border-pink-200 bg-pink-100 p-1 rounded-xl w-8 h-8 ' +
+            'dark:border-gray-100 dark:bg-gray-600'
           }
         >
           <FontAwesomeIcon className={'text-xl'} icon={['fas', 'search']} />
