@@ -9,6 +9,9 @@
 .env
 .idea
 
+save.js
+trending.json
+
 # testing
 /coverage
 

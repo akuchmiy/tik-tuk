@@ -1,6 +1,7 @@
 import { AxiosInstance } from 'axios'
 import { Feed } from '../models/Feed'
 import apiClient from './apiClient'
+import configService from '../config/configService'
 
 class FeedService {
   constructor(private apiClient: AxiosInstance) {}
@@ -10,7 +11,16 @@ class FeedService {
   }
 
   async getTrendingFeed(): Promise<Feed[]> {
-    const { data } = await this.apiClient.get<Feed[]>('/trending/feed')
+    let url, config
+    if (process.env.NODE_ENV === 'development') {
+      url = configService.getValue('REACT_APP_DEV_FEED_URL')
+      config = process.env.NODE_ENV === 'development' ? { baseURL: '' } : {}
+    } else {
+      url = '/trending/feed'
+      config = {}
+    }
+
+    const { data } = await this.apiClient.get<Feed[]>(url, config)
     return data
   }
 
@@ -21,7 +31,7 @@ class FeedService {
 
   async getHashtagFeed(hashtag: string): Promise<Feed[]> {
     const { data } = await this.apiClient.get<Feed[]>(
-      `/hashtag/feed/christmas${hashtag}`
+      `/hashtag/feed/${hashtag}`
     )
     return data
   }

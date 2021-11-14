@@ -25,7 +25,7 @@ const TrendingFeedList: FC = () => {
       setFeedList(data)
       console.log(data)
     })()
-  }, [])
+  }, [query])
 
   return <FeedList feedList={feedList} />
 }
