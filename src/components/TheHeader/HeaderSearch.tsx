@@ -1,4 +1,4 @@
-import React, { FC, FormEvent } from 'react'
+import React, { FC, FormEvent, useMemo } from 'react'
 import BasicInput from '../BasicInput/BasicInput'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import useInput from '../../hooks/useInput'
@@ -7,14 +7,18 @@ import { useNavigate } from 'react-router-dom'
 const HeaderSearch: FC = () => {
   const query = useInput('')
   const navigate = useNavigate()
+  const [newLocation, ariaNavigateTo] = useMemo(() => {
+    if (!query.value) return ['', 'Enter hashtag or username']
+
+    if (query.value.startsWith('#')) {
+      const withoutHash = query.value.slice(1)
+      return [`/?query=${withoutHash}`, `Get trending news by hashtag`]
+    } else return [`/user/${query.value}`, 'Find user by username']
+  }, [query])
 
   function findByQuery(e: FormEvent) {
     e.preventDefault()
-    if (query.value.startsWith('#')) {
-      navigate(`/?query=${query.value}`)
-    } else {
-      navigate(`/user/${query.value}`)
-    }
+    if (newLocation) navigate(newLocation)
     query.setValue('')
   }
 
@@ -25,6 +29,7 @@ const HeaderSearch: FC = () => {
     >
       {/*TODO extract input*/}
       <BasicInput
+        aria-label={ariaNavigateTo}
         {...query.use()}
         placeholder={'Hashtag or nickname'}
         className={'w-full'}
@@ -32,6 +37,8 @@ const HeaderSearch: FC = () => {
       />
       {query.value && (
         <button
+          type={'submit'}
+          aria-label={ariaNavigateTo}
           className={
             'absolute right-2 border-2 border-pink-200 bg-pink-100 p-1 rounded-xl w-8 h-8'
           }

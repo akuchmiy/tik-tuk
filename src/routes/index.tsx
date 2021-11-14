@@ -7,7 +7,7 @@ const AppRoutes: FC = () => {
   return (
     <Routes>
       <Route path="/" element={<FeedList />} />
-      <Route path="/user/:userId" element={<UserInfo />} />
+      <Route path="/user/:username" element={<UserInfo />} />
     </Routes>
   )
 }
