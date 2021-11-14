@@ -1,15 +1,16 @@
-import {User} from "./User";
+import { AuthorMeta } from './AuthorMeta'
 
 export interface Feed {
   id: string
   text: string
   createTime: number
-  authorMeta: User
+  authorMeta: AuthorMeta
   videoUrl: string
   videoMeta: {
     height: number
     width: number
   }
+  playCount: number
   diggCount: number
   commentCount: number
 }

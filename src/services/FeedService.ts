@@ -1,14 +1,6 @@
-import axios, { AxiosInstance } from 'axios'
+import { AxiosInstance } from 'axios'
 import { Feed } from '../models/Feed'
-import configService from '../config/configService'
-
-const apiClient = axios.create({
-  url: 'https://tiktok33.p.rapidapi.com/',
-  headers: {
-    'x-rapidapi-host': 'tiktok33.p.rapidapi.com',
-    'x-rapidapi-key': configService.getValue('REACT_APP_RAPIDAPI_KEY'),
-  },
-})
+import apiClient from './apiClient'
 
 class FeedService {
   constructor(private apiClient: AxiosInstance) {}
@@ -19,6 +11,18 @@ class FeedService {
 
   async getTrendingFeed(): Promise<Feed[]> {
     const { data } = await this.apiClient.get<Feed[]>('trending/feed')
+    return data
+  }
+
+  async getUserFeed(username: string): Promise<Feed[]> {
+    const { data } = await this.apiClient.get<Feed[]>(`user/feed/${username}`)
+    return data
+  }
+
+  async getHashtagFeed(hashtag: string): Promise<Feed[]> {
+    const { data } = await this.apiClient.get<Feed[]>(
+      `hashtag/feed/christmas${hashtag}`
+    )
     return data
   }
 }
