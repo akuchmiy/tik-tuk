@@ -21,7 +21,7 @@ function TheHeader() {
             <span>Tik Tuk</span>
             <span
               className={
-                'center ml-2 p-2.5 text-2xl rounded-full group-hover:bg-black group-hover:text-white transition-colors ' +
+                'center ml-1 sm:ml-2 p-2 sm:p-2.5 text-xl sm:text-2xl rounded-full group-hover:bg-black group-hover:text-white transition-colors ' +
                 'dark:text-white dark:group-hover:bg-white dark:group-hover:text-black'
               }
             >

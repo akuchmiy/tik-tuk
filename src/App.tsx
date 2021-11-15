@@ -4,6 +4,8 @@ import TheHeader from './components/layout/TheHeader/TheHeader'
 import AppRoutes from './routes'
 import TheFooter from './components/layout/TheFooter/TheFooter'
 
+console.log(document.cookie)
+
 const App: FC = () => {
   return (
     <div className={'h-screen flex flex-col'}>

@@ -25,9 +25,21 @@ const TrendingFeedList: FC = () => {
       setFeedList(data)
       console.log(data)
     })()
-  }, [query])
+  }, [query, setFeedList])
 
-  return <FeedList feedList={feedList} />
+  return (
+    <>
+      <h1
+        className={
+          'text-black font-yuji dark:text-gray-100 text-5xl pl-7 mb-16'
+        }
+      >
+        Trending <br />
+        {queryParam ? `for "${queryParam}"` : ''}
+      </h1>
+      <FeedList className={'gap-4'} feedList={feedList} />
+    </>
+  )
 }
 
 export default TrendingFeedList

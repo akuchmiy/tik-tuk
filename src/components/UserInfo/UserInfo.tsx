@@ -12,7 +12,13 @@ const UserInfo: FC = () => {
 
   return (
     <>
-      <div>Hi there 2 {username} </div>
+      <h1
+        className={
+          'text-black font-yuji dark:text-gray-100 text-5xl pl-7 mb-16'
+        }
+      >
+        {`${username}'s profile`}
+      </h1>
       <UserFeedList username={username} />
     </>
   )
