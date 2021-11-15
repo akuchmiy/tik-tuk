@@ -38,6 +38,7 @@ const FeedList: FC<FeedListProps> = ({
         setIsSmallScreen(false)
       }
     }
+    listener()
     window.addEventListener('resize', listener)
     return () => window.removeEventListener('resize', listener)
   }, [isSmallScreen, setIsSmallScreen, setColumns])
@@ -45,7 +46,12 @@ const FeedList: FC<FeedListProps> = ({
   return (
     <div className={`grid grid-cols-${columns} ${className}`}>
       {feedList.map((feed) => (
-        <FeedItem size={itemSize} key={feed.id} feed={feed} />
+        <FeedItem
+          showDescription={columns !== maxColumns}
+          size={itemSize}
+          key={feed.id}
+          feed={feed}
+        />
       ))}
       {!isSmallScreen && (
         <FeedControls

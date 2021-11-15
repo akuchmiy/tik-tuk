@@ -4,8 +4,8 @@
 }
 
 .video-mock-0 {
-    width: calc(var(--feed-width) * 0.9);
-    height: calc(var(--feed-height) * 0.9);
+    width: min(calc(var(--feed-width) * 0.9), 100%);
+    height: min(calc(var(--feed-height) * 0.9), 80vh);
 }
 
 .video-mock-1 {

@@ -37,7 +37,11 @@ const TrendingFeedList: FC = () => {
         Trending <br />
         {queryParam ? `for "${queryParam}"` : ''}
       </h1>
-      <FeedList maxColumns={2} className={'gap-4'} feedList={feedList} />
+      <FeedList
+        maxColumns={2}
+        className={'gap-4 gap-y-20'}
+        feedList={feedList}
+      />
     </>
   )
 }
