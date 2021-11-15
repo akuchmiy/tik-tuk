@@ -1,4 +1,14 @@
-.video-mock {
+.video-mock-0 {
     width: 570px;
-    height: 800px;
+    height: 1024px;
+}
+
+.video-mock-1 {
+    width: 376px;
+    height: 675px;
+}
+
+.video-mock-2 {
+    width: 200px;
+    height: 350px;
 }

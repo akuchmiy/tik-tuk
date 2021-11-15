@@ -22,7 +22,14 @@ const UserFeedList: FC<Props> = ({ username }) => {
     })()
   }, [username])
 
-  return <FeedList feedList={feedList} />
+  return (
+    <FeedList
+      className={'gap-3'}
+      maxColumns={3}
+      currentColumns={3}
+      feedList={feedList}
+    />
+  )
 }
 
 export default UserFeedList

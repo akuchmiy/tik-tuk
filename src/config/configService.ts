@@ -1,4 +1,6 @@
 class ConfigService {
+  public readonly FEED_LIST_BREAKPOINT = 970
+
   getValue(key: string): string {
     const value = process.env[key]
     if (!value) {

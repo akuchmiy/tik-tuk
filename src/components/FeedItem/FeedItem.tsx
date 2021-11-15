@@ -5,9 +5,10 @@ import './feedItem.css'
 
 interface FeedItemProps {
   feed: Feed
+  size: number
 }
 
-const FeedItem: FC<FeedItemProps> = ({ feed }) => {
+const FeedItem: FC<FeedItemProps> = ({ feed, size }) => {
   const [isPlaying, setIsPlaying] = useState(false)
 
   const playVideo: MouseEventHandler<HTMLVideoElement> = useCallback(
@@ -36,8 +37,11 @@ const FeedItem: FC<FeedItemProps> = ({ feed }) => {
           <span>{feed.authorMeta.name}</span>
         </Link>
       </div>
-      <div className={'center'}>
-        <div className={'h-96 w-52 bg-pink-200 dark:bg-gray-500'} />
+      <div className={'center relative'}>
+        <div className={`video-mock-${size} bg-pink-200 dark:bg-gray-500`} />
+        {/*<div>*/}
+        {/*  {feed.commentCount} {feed.diggCount} {feed.createTime}*/}
+        {/*</div>*/}
       </div>
       {/*<video*/}
       {/*  controls*/}

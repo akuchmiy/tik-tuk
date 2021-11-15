@@ -5,6 +5,7 @@ import {
   faMusic,
   faPlus,
   faMinus,
+  faAngleDoubleUp,
 } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faCheckSquare, faSearch, faMusic, faPlus, faMinus)
+library.add(faCheckSquare, faSearch, faMusic, faPlus, faMinus, faAngleDoubleUp)

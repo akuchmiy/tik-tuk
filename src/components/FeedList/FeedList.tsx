@@ -1,30 +1,68 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import { Feed } from '../../models/Feed'
 import FeedItem from '../FeedItem/FeedItem'
 import FeedControls from './FeedControls'
+import configService from '../../config/configService'
 
 interface FeedListProps {
   className?: string
   feedList: Feed[]
+  currentColumns?: number
+  minColumns?: number
+  maxColumns?: number
 }
 
-const FeedList: FC<FeedListProps> = ({ feedList, className }) => {
-  const [cols, setCols] = useState<number>(1)
+const FeedList: FC<FeedListProps> = ({
+  feedList,
+  className,
+  currentColumns = 1,
+  minColumns = 1,
+  maxColumns = 3,
+}) => {
+  const [columns, setColumns] = useState<number>(currentColumns)
+  const itemSize = columns - 1
+  const [isSmallScreen, setIsSmallScreen] = useState(false)
 
   function changeColumns(direction: 'UP' | 'DOWN') {
     if (direction === 'UP') {
-      setCols((cols) => cols + 1)
+      setColumns((cols) => cols + 1)
     } else {
-      setCols((cols) => cols - 1)
+      setColumns((cols) => cols - 1)
     }
   }
 
+  useEffect(() => {
+    const listener = () => {
+      if (
+        window.innerWidth < configService.FEED_LIST_BREAKPOINT &&
+        !isSmallScreen
+      ) {
+        setIsSmallScreen(true)
+        setColumns(1)
+      } else if (
+        window.innerWidth >= configService.FEED_LIST_BREAKPOINT &&
+        isSmallScreen
+      ) {
+        setIsSmallScreen(false)
+      }
+    }
+    window.addEventListener('resize', listener)
+    return () => window.removeEventListener('resize', listener)
+  }, [isSmallScreen, setIsSmallScreen, setColumns])
+
   return (
-    <div className={`grid grid-cols-${cols} ${className}`}>
+    <div className={`grid grid-cols-${columns} ${className}`}>
       {feedList.map((feed) => (
-        <FeedItem key={feed.id} feed={feed} />
+        <FeedItem size={itemSize} key={feed.id} feed={feed} />
       ))}
-      <FeedControls changeColumns={changeColumns} columns={cols} />
+      {!isSmallScreen && (
+        <FeedControls
+          minColumns={minColumns}
+          maxColumns={maxColumns}
+          changeColumns={changeColumns}
+          columns={columns}
+        />
+      )}
     </div>
   )
 }
