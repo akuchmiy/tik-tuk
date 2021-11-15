@@ -10,6 +10,7 @@ export interface Feed {
     height: number
     width: number
   }
+  hashtags: [{ name: string }]
   playCount: number
   diggCount: number
   commentCount: number

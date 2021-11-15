@@ -1,14 +1,19 @@
+:root{
+    --feed-width: 570px;
+    --feed-height: 1024px;
+}
+
 .video-mock-0 {
-    width: 570px;
-    height: 1024px;
+    width: calc(var(--feed-width) * 0.9);
+    height: calc(var(--feed-height) * 0.9);
 }
 
 .video-mock-1 {
-    width: 376px;
-    height: 675px;
+    width: calc(var(--feed-width) * 0.66);
+    height: calc(var(--feed-height) * 0.66);
 }
 
 .video-mock-2 {
-    width: 200px;
-    height: 350px;
+    width: calc(var(--feed-width) * 0.5);
+    height: calc(var(--feed-height) * 0.5);
 }

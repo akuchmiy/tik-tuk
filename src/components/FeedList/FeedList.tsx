@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { Feed } from '../../models/Feed'
 import FeedItem from '../FeedItem/FeedItem'
 import FeedControls from './FeedControls'
@@ -22,14 +22,6 @@ const FeedList: FC<FeedListProps> = ({
   const [columns, setColumns] = useState<number>(currentColumns)
   const itemSize = columns - 1
   const [isSmallScreen, setIsSmallScreen] = useState(false)
-
-  function changeColumns(direction: 'UP' | 'DOWN') {
-    if (direction === 'UP') {
-      setColumns((cols) => cols + 1)
-    } else {
-      setColumns((cols) => cols - 1)
-    }
-  }
 
   useEffect(() => {
     const listener = () => {
@@ -59,7 +51,7 @@ const FeedList: FC<FeedListProps> = ({
         <FeedControls
           minColumns={minColumns}
           maxColumns={maxColumns}
-          changeColumns={changeColumns}
+          setColumns={setColumns}
           columns={columns}
         />
       )}

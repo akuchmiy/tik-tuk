@@ -8,11 +8,6 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 
-body {
-    @apply bg-pink-50 min-h-screen dark:bg-gray-600 overflow-x-hidden;
-    color: #212121;
-}
-
 .font-yuji {
     font-family: "Yuji Mai", serif;
 }

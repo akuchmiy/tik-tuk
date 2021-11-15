@@ -25,7 +25,7 @@ const FeedItem: FC<FeedItemProps> = ({ feed, size }) => {
   )
 
   return (
-    <div className={'relative flex flex-col overflow-hidden mx-auto'}>
+    <div className={'w-full flex flex-col overflow-hidden mx-auto'}>
       {/*instead of video*/}
       <div className={'flex flex-grow'}>
         <Link to={`/user/${feed.authorMeta.name}`}>
@@ -38,6 +38,7 @@ const FeedItem: FC<FeedItemProps> = ({ feed, size }) => {
         </Link>
       </div>
       <div className={'center relative'}>
+        {/*<div className={`w-full h-96 bg-pink-200 dark:bg-gray-500`} />*/}
         <div className={`video-mock-${size} bg-pink-200 dark:bg-gray-500`} />
         {/*<div>*/}
         {/*  {feed.commentCount} {feed.diggCount} {feed.createTime}*/}
