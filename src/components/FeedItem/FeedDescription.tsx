@@ -38,8 +38,8 @@ const FeedDescription: FC<FeedDescriptionProps> = ({
         </h3>
         <p className={'break-words max-w-xs'}>
           {getTextWithoutHashtags()}
-          {hashtags.map((hashtag) => (
-            <Link key={hashtag.id} to={`/?query=${hashtag.name}`}>
+          {hashtags.map((hashtag, index) => (
+            <Link key={index} to={`/?query=${hashtag.name}`}>
               <strong>#{hashtag.name} </strong>
             </Link>
           ))}

@@ -4,7 +4,7 @@ import { Feed } from '../../models/Feed'
 import FeedService from '../../services/FeedService'
 
 interface Props {
-  username?: string
+  username: string
 }
 
 const UserFeedList: FC<Props> = ({ username }) => {
@@ -16,7 +16,9 @@ const UserFeedList: FC<Props> = ({ username }) => {
 
   useEffect(() => {
     ;(async () => {
-      const data = await FeedService.getTrendingFeed()
+      const data = await FeedService.getUserFeed(username)
+      if (!data) return
+
       setFeedList(data)
       console.log(data)
     })()

@@ -20,12 +20,16 @@ const TrendingFeedList: FC = () => {
   }, [newTitle])
 
   useEffect(() => {
+    setFeedList([])
     ;(async () => {
-      const data = await FeedService.getTrendingFeed()
+      const data =
+        queryParam == null
+          ? await FeedService.getTrendingFeed()
+          : await FeedService.getHashtagFeed(queryParam)
       setFeedList(data)
       console.log(data)
     })()
-  }, [query, setFeedList])
+  }, [queryParam, setFeedList])
 
   return (
     <>

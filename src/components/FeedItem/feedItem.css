@@ -5,12 +5,19 @@
 
 .video-mock-0 {
     width: min(calc(var(--feed-width) * 0.9), 100%);
-    height: min(calc(var(--feed-height) * 0.9), 80vh);
+    height: min(calc(var(--feed-height) * 0.9), 100%);
 }
 
 .video-mock-1 {
     width: calc(var(--feed-width) * 0.66);
     height: calc(var(--feed-height) * 0.66);
+}
+
+@media screen and (min-width: 1300px) {
+    .video-mock-1 {
+        width: min(calc(var(--feed-width) * 0.9), 100%);
+        height: min(calc(var(--feed-height) * 0.9), 100%);
+    }
 }
 
 .video-mock-2 {

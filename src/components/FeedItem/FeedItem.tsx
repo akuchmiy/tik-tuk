@@ -39,19 +39,18 @@ const FeedItem: FC<FeedItemProps> = ({
         />
       )}
       <div className={'center relative'}>
-        <div
-          className={`video-mock-${size} bg-pink-200 dark:bg-gray-500 rounded-xl`}
-        />
-        {/*<video*/}
-        {/*  controls*/}
-        {/*  autoPlay={false}*/}
-        {/*  onClick={playVideo}*/}
-        {/*  className={`video-mock-${size} rounded-xl object-cover`}*/}
-        {/*  {...feed.videoMeta}*/}
-        {/*>*/}
-        {/*  <source src={feed.videoUrl} type="video/mp4" />*/}
-        {/*  Sorry, your browser doesn't support embedded videos.*/}
-        {/*</video>*/}
+        {/*<div*/}
+        {/*  className={`video-mock-${size} bg-pink-200 dark:bg-gray-500 rounded-xl`}*/}
+        {/*/>*/}
+        <video
+          autoPlay={false}
+          onClick={playVideo}
+          className={`video-mock-${size} rounded-xl object-cover`}
+          {...feed.videoMeta}
+        >
+          <source src={feed.videoUrl} type="video/mp4" />
+          Sorry, your browser doesn't support embedded videos.
+        </video>
         {/*<div>*/}
         {/*  {feed.commentCount} {feed.diggCount} {feed.createTime}*/}
         {/*</div>*/}
