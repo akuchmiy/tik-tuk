@@ -9,11 +9,7 @@ interface FeedItemProps {
   showDescription?: boolean
 }
 
-const FeedItem: FC<FeedItemProps> = ({
-  feed,
-  size,
-  showDescription = false,
-}) => {
+const FeedItem: FC<FeedItemProps> = ({ feed, showDescription = false }) => {
   const [isPlaying, setIsPlaying] = useState(false)
 
   const playVideo: MouseEventHandler<HTMLVideoElement> = useCallback(
@@ -30,7 +26,7 @@ const FeedItem: FC<FeedItemProps> = ({
   )
 
   return (
-    <div className={'flex flex-col overflow-hidden mx-auto'}>
+    <div className={'flex flex-col mx-auto'}>
       {showDescription && (
         <FeedDescription
           authorMeta={feed.authorMeta}
@@ -38,14 +34,18 @@ const FeedItem: FC<FeedItemProps> = ({
           text={feed.text}
         />
       )}
-      <div className={'center relative'}>
+      <div
+        className={
+          'center relative dark:ring-gray-100 ring-2 ring-pink-400 ring-offset-3 shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden'
+        }
+      >
         {/*<div*/}
         {/*  className={`video-mock-${size} bg-pink-200 dark:bg-gray-500 rounded-xl`}*/}
         {/*/>*/}
         <video
           autoPlay={false}
           onClick={playVideo}
-          className={`video rounded-xl object-cover`}
+          className={`video object-cover`}
           {...feed.videoMeta}
         >
           <source src={feed.videoUrl} type="video/mp4" />

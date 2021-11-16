@@ -25,7 +25,8 @@ const FeedControls: FC<FeedControlsProps> = ({
   return (
     <div
       className={
-        'fixed top-1/3 right-2 p-1 flex flex-col text-xl bg-pink-300 rounded-2xl text-gray-700'
+        'fixed top-1/3 right-2 p-1 flex flex-col text-xl bg-pink-200 border-2 border-pink-300 rounded-2xl text-gray-700 ' +
+        'dark:text-gray-100 dark:bg-gray-700 dark:border-gray-300'
       }
       aria-hidden
     >
@@ -37,7 +38,7 @@ const FeedControls: FC<FeedControlsProps> = ({
       >
         <FontAwesomeIcon icon={['fas', 'plus']} />
       </button>
-      <div className={'w-full h-px bg-gray-700 my-2'} />
+      <div className={'w-full h-px bg-gray-700 my-2 dark:bg-gray-100'} />
       <button
         disabled={columns === minColumns}
         className={'hover:text-gray-400'}

@@ -26,8 +26,8 @@ const TrendingFeedList: FC = () => {
         queryParam == null
           ? await FeedService.getTrendingFeed()
           : await FeedService.getHashtagFeed(queryParam)
+
       setFeedList(data)
-      console.log(data)
     })()
   }, [queryParam, setFeedList])
 
