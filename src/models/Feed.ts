@@ -1,5 +1,10 @@
 import { AuthorMeta } from './AuthorMeta'
 
+export interface Hashtag {
+  id: string
+  name: string
+}
+
 export interface Feed {
   id: string
   text: string
@@ -10,7 +15,7 @@ export interface Feed {
     height: number
     width: number
   }
-  hashtags: [{ name: string }]
+  hashtags: Hashtag[]
   playCount: number
   diggCount: number
   commentCount: number

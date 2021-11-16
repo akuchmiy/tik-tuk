@@ -1,10 +1,11 @@
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { AuthorMeta } from '../../models/AuthorMeta'
+import { Hashtag } from '../../models/Feed'
 
 interface FeedDescriptionProps {
   authorMeta: AuthorMeta
-  hashtags: [{ name: string }]
+  hashtags: Hashtag[]
   text: string
 }
 
@@ -38,7 +39,7 @@ const FeedDescription: FC<FeedDescriptionProps> = ({
         <p className={'break-words max-w-xs'}>
           {getTextWithoutHashtags()}
           {hashtags.map((hashtag) => (
-            <Link to={`/?query=${hashtag.name}`}>
+            <Link key={hashtag.id} to={`/?query=${hashtag.name}`}>
               <strong>#{hashtag.name} </strong>
             </Link>
           ))}
