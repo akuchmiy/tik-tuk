@@ -27,7 +27,9 @@ const HeaderSearch: FC = () => {
   return (
     <form
       onSubmit={findByQuery}
-      className={'center relative overflow-hidden w-1/2 md:w-1/3'}
+      className={
+        'on-small-search center relative overflow-hidden  w-1/2 mr-6 md:w-1/3 md:mr-0'
+      }
     >
       <BasicInput
         aria-label={ariaNavigateTo}

@@ -2,6 +2,7 @@ import React, { FC, MouseEventHandler, useCallback, useState } from 'react'
 import { Feed } from '../../models/Feed'
 import './feedItem.css'
 import FeedDescription from './FeedDescription'
+import VideoStatistics from './VideoStatistics'
 
 interface FeedItemProps {
   feed: Feed
@@ -43,6 +44,7 @@ const FeedItem: FC<FeedItemProps> = ({ feed, showDescription = false }) => {
         {/*  className={`video-mock-${size} bg-pink-200 dark:bg-gray-500 rounded-xl`}*/}
         {/*/>*/}
         <video
+          aria-label={feed.text}
           autoPlay={false}
           onClick={playVideo}
           className={`video object-cover`}
@@ -51,9 +53,7 @@ const FeedItem: FC<FeedItemProps> = ({ feed, showDescription = false }) => {
           <source src={feed.videoUrl} type="video/mp4" />
           Sorry, your browser doesn't support embedded videos.
         </video>
-        {/*<div>*/}
-        {/*  {feed.commentCount} {feed.diggCount} {feed.createTime}*/}
-        {/*</div>*/}
+        <VideoStatistics feed={feed} />
       </div>
     </div>
   )

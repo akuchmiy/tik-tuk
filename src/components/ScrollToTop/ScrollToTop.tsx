@@ -31,7 +31,7 @@ const ScrollToTop: FC = () => {
         <button
           aria-label={'Scroll to top'}
           className={
-            'w-12 h-12 center fixed bottom-5 border-2 border-transparent right-5 text-2xl text-black bg-pink-200 rounded-full ' +
+            'w-12 h-12 center fixed bottom-5 border-2 border-pink-300 right-5 text-2xl text-black bg-pink-200 rounded-full ' +
             'dark:bg-gray-600 dark:border-gray-300 dark:text-gray-100'
           }
           onClick={toTop}

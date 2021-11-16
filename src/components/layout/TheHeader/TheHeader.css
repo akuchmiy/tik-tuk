@@ -1,0 +1,15 @@
+
+@media (max-width: 425px) {
+    .hide-small {
+     display: none;
+    }
+
+    .on-small-header {
+        width: 100%;
+    }
+
+    .on-small-search {
+        margin-right: 2.5rem;
+    }
+}
+

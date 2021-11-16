@@ -8,6 +8,10 @@ import {
   faAngleDoubleUp,
   faSun,
   faMoon,
+  faPlay,
+  faPause,
+  faComment,
+  faHeart,
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -18,5 +22,9 @@ library.add(
   faMinus,
   faAngleDoubleUp,
   faSun,
-  faMoon
+  faMoon,
+  faPlay,
+  faPause,
+  faComment,
+  faHeart
 )
