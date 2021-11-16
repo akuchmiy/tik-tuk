@@ -30,7 +30,7 @@ const FeedItem: FC<FeedItemProps> = ({
   )
 
   return (
-    <div className={'w-full flex flex-col overflow-hidden mx-auto'}>
+    <div className={'flex flex-col overflow-hidden mx-auto'}>
       {showDescription && (
         <FeedDescription
           authorMeta={feed.authorMeta}
@@ -45,7 +45,7 @@ const FeedItem: FC<FeedItemProps> = ({
         <video
           autoPlay={false}
           onClick={playVideo}
-          className={`video-mock-${size} rounded-xl object-cover`}
+          className={`video rounded-xl object-cover`}
           {...feed.videoMeta}
         >
           <source src={feed.videoUrl} type="video/mp4" />

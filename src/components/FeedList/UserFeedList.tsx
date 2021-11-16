@@ -15,12 +15,12 @@ const UserFeedList: FC<Props> = ({ username }) => {
   }, [username])
 
   useEffect(() => {
+    setFeedList([])
     ;(async () => {
-      const data = await FeedService.getUserFeed(username)
-      if (!data) return
+      // const data = await FeedService.getUserFeed(username)
+      const data = await FeedService.getTrendingFeed()
 
       setFeedList(data)
-      console.log(data)
     })()
   }, [username])
 

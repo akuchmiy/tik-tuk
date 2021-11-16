@@ -15,14 +15,14 @@ const FeedDescription: FC<FeedDescriptionProps> = ({
   text,
 }) => {
   const getTextWithoutHashtags = () => {
-    const firstHash = text.indexOf('#')
-    if (firstHash !== -1) return text.slice(0, firstHash)
+    const firstHashIndex = text.indexOf('#')
+    if (firstHashIndex === -1) return text
 
-    return text
+    return text.slice(0, firstHashIndex)
   }
 
   return (
-    <div className={'flex flex-grow mx-auto max-w-4xl mb-4'}>
+    <div className={'flex flex-grow mb-4 justify-start'}>
       <Link className={'mr-3'} to={`/user/${authorMeta.name}`}>
         <img
           className={'w-14 h-14 object-cover rounded-full'}
