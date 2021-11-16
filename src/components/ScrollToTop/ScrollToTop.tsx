@@ -35,7 +35,10 @@ const ScrollToTop: FC = () => {
           }
           onClick={toTop}
         >
-          <FontAwesomeIcon icon={['fas', 'angle-double-up']} />
+          <FontAwesomeIcon
+            className={'animate-bounce'}
+            icon={['fas', 'angle-double-up']}
+          />
         </button>
       )}
     </>

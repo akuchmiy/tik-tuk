@@ -3,6 +3,7 @@ import { Feed } from '../../models/Feed'
 import FeedItem from '../FeedItem/FeedItem'
 import FeedControls from './FeedControls'
 import configService from '../../config/configService'
+import TheLoader from '../TheLoader/TheLoader'
 
 interface FeedListProps {
   className?: string
@@ -44,24 +45,32 @@ const FeedList: FC<FeedListProps> = ({
   }, [isSmallScreen, setIsSmallScreen, setColumns])
 
   return (
-    <div className={`grid grid-cols-${columns} ${className}`}>
-      {feedList.map((feed) => (
-        <FeedItem
-          showDescription={columns !== maxColumns}
-          size={itemSize}
-          key={feed.id}
-          feed={feed}
-        />
-      ))}
-      {!isSmallScreen && (
-        <FeedControls
-          minColumns={minColumns}
-          maxColumns={maxColumns}
-          setColumns={setColumns}
-          columns={columns}
-        />
+    <>
+      {feedList.length === 0 ? (
+        <div className={'w-full center flex-grow'}>
+          <TheLoader />
+        </div>
+      ) : (
+        <div className={`grid grid-cols-${columns} ${className}`}>
+          {feedList.map((feed) => (
+            <FeedItem
+              showDescription={columns !== maxColumns}
+              size={itemSize}
+              key={feed.id}
+              feed={feed}
+            />
+          ))}
+          {!isSmallScreen && (
+            <FeedControls
+              minColumns={minColumns}
+              maxColumns={maxColumns}
+              setColumns={setColumns}
+              columns={columns}
+            />
+          )}
+        </div>
       )}
-    </div>
+    </>
   )
 }
 

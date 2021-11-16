@@ -12,7 +12,7 @@ const App: FC = () => {
     <div className={'h-screen flex flex-col'}>
       <TheHeader />
       <main className={'bg-pink-50 flex-grow mt-16 dark:bg-gray-600'}>
-        <div className={'main-container mx-auto pt-6'}>
+        <div className={'min-h-full flex flex-col main-container mx-auto pt-6'}>
           <AppRoutes />
         </div>
       </main>
