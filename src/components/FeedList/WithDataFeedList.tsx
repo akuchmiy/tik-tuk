@@ -9,6 +9,7 @@ interface WithDataProps {
   currentColumns?: number
   minColumns?: number
   maxColumns?: number
+  showDescription?: boolean
 }
 
 const WithDataFeedList: FC<WithDataProps> = ({
@@ -16,6 +17,7 @@ const WithDataFeedList: FC<WithDataProps> = ({
   currentColumns = 1,
   minColumns = 1,
   maxColumns = 3,
+  showDescription = false,
   children,
 }) => {
   const query = useQuery()
@@ -57,6 +59,7 @@ const WithDataFeedList: FC<WithDataProps> = ({
       </h1>
       {children}
       <FeedList
+        showDescription={showDescription}
         currentColumns={currentColumns}
         minColumns={minColumns}
         maxColumns={maxColumns}

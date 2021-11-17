@@ -11,6 +11,7 @@ interface FeedListProps {
   currentColumns?: number
   minColumns?: number
   maxColumns?: number
+  showDescription?: boolean
 }
 
 const FeedList: FC<FeedListProps> = memo(
@@ -20,6 +21,7 @@ const FeedList: FC<FeedListProps> = memo(
     currentColumns = 1,
     minColumns = 1,
     maxColumns = 3,
+    showDescription = false,
   }) => {
     const [columns, setColumns] = useState<number>(currentColumns)
     const itemSize = columns - 1
@@ -43,13 +45,15 @@ const FeedList: FC<FeedListProps> = memo(
     }
 
     useEffect(() => {
-      const callback = (entries: IntersectionObserverEntry[]) => {
+      const callback = async (entries: IntersectionObserverEntry[]) => {
         if (columns !== 1) return
         const entry = entries[0]
         const video = entry.target as HTMLVideoElement
         if (entry.isIntersecting) {
           videoRefs.current.forEach((vid) => vid.pause())
-          video.play()
+          try {
+            await video.play()
+          } catch (e) {}
         } else {
           video.pause()
         }
@@ -99,7 +103,9 @@ const FeedList: FC<FeedListProps> = memo(
                 ref={(el) =>
                   (videoRefs.current[index] = el as HTMLVideoElement)
                 }
-                showDescription={columns !== maxColumns}
+                showDescription={
+                  showDescription ? true : columns !== maxColumns
+                }
                 size={itemSize}
                 key={feed.id}
                 feed={feed}

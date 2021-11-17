@@ -9,8 +9,8 @@ module.exports = {
   },
   variants: {
     extend: {
-      transform: ['group-hover'],
-      translate: ['group-hover'],
+      transform: ['group-hover', 'group-focus'],
+      translate: ['group-hover', 'group-focus'],
     },
   },
   plugins: [],

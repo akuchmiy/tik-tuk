@@ -77,7 +77,7 @@ const FeedItem = forwardRef<HTMLVideoElement, FeedItemProps>(
           </video>
           <VideoStatistics
             className={
-              'absolute bottom-5 right-2 transform translate-x-20 group-hover:translate-x-0 transition-transform'
+              'absolute bottom-5 right-2 transform translate-x-20 group-hover:translate-x-0 group-focus:translate-x-0 transition-transform'
             }
             feed={feed}
           />
