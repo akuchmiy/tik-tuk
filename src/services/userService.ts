@@ -1,13 +1,21 @@
 import { AxiosInstance } from 'axios'
 import apiClient from './apiClient'
-import { User } from '../models/User'
+import { UserData } from '../models/UserData'
 
 class UserService {
   constructor(private apiClient: AxiosInstance) {}
 
-  async getUserInfo(username: string): Promise<User> {
-    const { data } = await this.apiClient.get<User>(`user/info/${username}`)
-    return data
+  async getUserInfo(username: string): Promise<UserData | null> {
+    try {
+      const { data } = await this.apiClient.get<UserData>(
+        `user/info/${username}`
+      )
+      if (!data?.user) return null
+
+      return data
+    } catch (e) {
+      return null
+    }
   }
 }
 

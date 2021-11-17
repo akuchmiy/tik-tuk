@@ -1,13 +1,13 @@
 import { FC } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import UserInfo from '../components/UserInfo/UserInfo'
-import TrendingFeedList from '../components/FeedList/TrendingFeedList'
+import UserTab from '../components/UserTab/UserTab'
+import WithDataFeedList from '../components/FeedList/WithDataFeedList'
 
 const AppRoutes: FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<TrendingFeedList />} />
-      <Route path="/user/:username" element={<UserInfo />} />
+      <Route path="/" element={<WithDataFeedList maxColumns={2} />} />
+      <Route path="/user/:username" element={<UserTab />} />
     </Routes>
   )
 }
