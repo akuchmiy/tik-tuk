@@ -43,6 +43,25 @@ const FeedList: FC<FeedListProps> = memo(
     }
 
     useEffect(() => {
+      const callback = (entries: IntersectionObserverEntry[]) => {
+        if (columns !== 1) return
+        const entry = entries[0]
+        const video = entry.target as HTMLVideoElement
+        if (entry.isIntersecting) {
+          videoRefs.current.forEach((vid) => vid.pause())
+          video.play()
+        } else {
+          video.pause()
+        }
+      }
+      const observer = new IntersectionObserver(callback, {
+        threshold: 0.5,
+      })
+      videoRefs.current.forEach((videoElem) => observer.observe(videoElem))
+      return () => observer.disconnect()
+    }, [feedList, columns])
+
+    useEffect(() => {
       videoRefs.current = videoRefs.current.slice(0, feedList.length)
     }, [feedList])
 

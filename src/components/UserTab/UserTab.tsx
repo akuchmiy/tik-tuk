@@ -19,7 +19,6 @@ const UserTab: FC = () => {
     setUserData(null)
     ;(async () => {
       const data = await userService.getUserInfo(username)
-      console.log(data)
       setUserData(data)
     })()
   }, [username])
