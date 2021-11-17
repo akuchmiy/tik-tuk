@@ -1,4 +1,4 @@
-import React, { FC, memo, useEffect, useState } from 'react'
+import React, { FC, memo, useEffect, useRef, useState } from 'react'
 import { Feed } from '../../models/Feed'
 import FeedItem from '../FeedItem/FeedItem'
 import FeedControls from './FeedControls'
@@ -24,6 +24,27 @@ const FeedList: FC<FeedListProps> = memo(
     const [columns, setColumns] = useState<number>(currentColumns)
     const itemSize = columns - 1
     const [isSmallScreen, setIsSmallScreen] = useState(false)
+    const videoRefs = useRef<HTMLVideoElement[]>([])
+
+    const onVideoEnd = async (index: number) => {
+      if (index + 1 >= videoRefs.current.length) return
+      const nextVideo = videoRefs.current[index + 1]
+
+      try {
+        await nextVideo.play()
+      } catch (e) {}
+
+      const rect = nextVideo.getBoundingClientRect()
+      window.scrollTo({
+        top: rect.top + window.scrollY - rect.height / 5,
+        left: 0,
+        behavior: 'smooth',
+      })
+    }
+
+    useEffect(() => {
+      videoRefs.current = videoRefs.current.slice(0, feedList.length)
+    }, [feedList])
 
     useEffect(() => {
       const listener = () => {
@@ -53,12 +74,18 @@ const FeedList: FC<FeedListProps> = memo(
           </div>
         ) : (
           <div className={`grid grid-cols-${columns} ${className}`}>
-            {feedList.map((feed) => (
+            {/*<button onClick={() => console.log(videoRefs.current)}>Lol</button>*/}
+            {feedList.map((feed, index) => (
               <FeedItem
+                ref={(el) =>
+                  (videoRefs.current[index] = el as HTMLVideoElement)
+                }
                 showDescription={columns !== maxColumns}
                 size={itemSize}
                 key={feed.id}
                 feed={feed}
+                index={index}
+                onVideoEnd={onVideoEnd}
               />
             ))}
             {!isSmallScreen && (
