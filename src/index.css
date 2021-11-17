@@ -18,6 +18,10 @@
     .main-container {
         @apply w-11/12 md:w-10/12
     }
+
+    .visually-hidden {
+        @apply absolute w-0 h-0 invisible pointer-events-none
+    }
 }
 
 #root {

@@ -1,4 +1,4 @@
-import React, { FC, MouseEventHandler, useCallback, useState } from 'react'
+import React, { FC, useCallback, useState } from 'react'
 import { Feed } from '../../models/Feed'
 import './feedItem.css'
 import FeedDescription from './FeedDescription'
@@ -13,8 +13,18 @@ interface FeedItemProps {
 const FeedItem: FC<FeedItemProps> = ({ feed, showDescription = false }) => {
   const [isPlaying, setIsPlaying] = useState(false)
 
-  const playVideo: MouseEventHandler<HTMLVideoElement> = useCallback(
-    async (event) => {
+  const playVideo = useCallback(
+    async (
+      event:
+        | React.MouseEvent<HTMLVideoElement>
+        | React.KeyboardEvent<HTMLVideoElement>
+    ) => {
+      if (
+        event.nativeEvent instanceof KeyboardEvent &&
+        event.nativeEvent?.key !== 'Enter'
+      )
+        return
+
       const video = event.target as HTMLVideoElement
       if (video.paused) {
         try {
@@ -40,14 +50,21 @@ const FeedItem: FC<FeedItemProps> = ({ feed, showDescription = false }) => {
           'group center relative ring-2 ring-offset-3 ring-pink-400 dark:ring-gray-100 shadow-2xl rounded-xl overflow-hidden'
         }
       >
-        {/*<div*/}
-        {/*  className={`video-mock-${size} bg-pink-200 dark:bg-gray-500 rounded-xl`}*/}
-        {/*/>*/}
+        <span id={`${feed.createTime}`} className={'visually-hidden'}>
+          {feed.text}
+        </span>
         <video
-          aria-label={feed.text}
+          tabIndex={0}
+          aria-label={
+            isPlaying
+              ? 'Press enter to stop the video'
+              : 'Press enter to resume the video'
+          }
+          aria-describedby={`${feed.createTime}`}
           autoPlay={false}
           onClick={playVideo}
-          className={`video object-cover`}
+          onKeyPress={playVideo}
+          className={`video object-cover cursor-pointer`}
           {...feed.videoMeta}
         >
           <source src={feed.videoUrl} type="video/mp4" />

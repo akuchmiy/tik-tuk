@@ -18,7 +18,7 @@ const VideoStatistics: FC<VideoStatisticsProps> = ({
     >
       <button
         className={
-          'relative w-16 h-16 bg-gray-100 dark:bg-gray-600 rounded-full border-l-2 border-t-2 border-black dark:border-gray-100 transition-colors duration-100 '
+          'relative w-16 h-16 bg-gray-100 dark:bg-gray-600 rounded-full border-l-2 border-t-2 border-black dark:border-gray-100 transition-colors duration-100 hover:opacity-80'
         }
       >
         <FontAwesomeIcon className={'text-md'} icon={['fas', 'heart']} />
@@ -27,7 +27,7 @@ const VideoStatistics: FC<VideoStatisticsProps> = ({
       </button>
       <button
         className={
-          'relative w-16 h-16 bg-gray-100 dark:bg-gray-600 rounded-full border-l-2 border-t-2 border-black dark:border-gray-100 transition-colors duration-100 '
+          'relative w-16 h-16 bg-gray-100 dark:bg-gray-600 rounded-full border-l-2 border-t-2 border-black dark:border-gray-100 transition-colors duration-100 hover:opacity-80'
         }
       >
         <FontAwesomeIcon className={'text-md'} icon={['fas', 'comment']} />
