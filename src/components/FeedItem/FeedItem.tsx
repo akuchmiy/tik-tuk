@@ -71,7 +71,9 @@ const FeedItem: FC<FeedItemProps> = ({ feed, showDescription = false }) => {
           Sorry, your browser doesn't support embedded videos.
         </video>
         <VideoStatistics
-          className={'opacity-0 group-hover:opacity-100 transition-opacity'}
+          className={
+            'absolute bottom-5 right-2 transform translate-x-20 group-hover:translate-x-0 transition-transform'
+          }
           feed={feed}
         />
       </div>

@@ -14,9 +14,10 @@ const VideoStatistics: FC<VideoStatisticsProps> = ({
 }) => {
   return (
     <div
-      className={`flex flex-col gap-y-3.5 absolute bottom-5 right-2 text-black dark:text-gray-100 leading-5 ${className}`}
+      className={`flex flex-col gap-y-3.5 text-black dark:text-gray-100 leading-5 ${className}`}
     >
       <button
+        aria-label={'Likes'}
         className={
           'relative w-16 h-16 bg-gray-100 dark:bg-gray-600 rounded-full border-l-2 border-t-2 border-black dark:border-gray-100 transition-colors duration-100 hover:opacity-80'
         }
@@ -26,6 +27,7 @@ const VideoStatistics: FC<VideoStatisticsProps> = ({
         <span>{NumberService.formatNumber(feed.diggCount, 1)}</span>
       </button>
       <button
+        aria-label={'Comments'}
         className={
           'relative w-16 h-16 bg-gray-100 dark:bg-gray-600 rounded-full border-l-2 border-t-2 border-black dark:border-gray-100 transition-colors duration-100 hover:opacity-80'
         }
