@@ -52,7 +52,7 @@ const UserInfo: FC<UserInfoProps> = ({ userData }) => {
             </h2>
             <p
               className={
-                'text-xl md:text-3xl sm:max-w-min md:max-w-md xl:max-w-2xl break-words'
+                'text-xl md:text-3xl sm:max-w-sm md:max-w-md xl:max-w-2xl break-words'
               }
             >
               {userData.user.signature}
