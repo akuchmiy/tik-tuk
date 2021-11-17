@@ -37,7 +37,7 @@ const FeedItem: FC<FeedItemProps> = ({ feed, showDescription = false }) => {
       )}
       <div
         className={
-          'center relative dark:ring-gray-100 ring-2 ring-pink-400 ring-offset-3 shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden'
+          'group center relative ring-2 ring-offset-3 ring-pink-400 dark:ring-gray-100 shadow-2xl rounded-xl overflow-hidden'
         }
       >
         {/*<div*/}
@@ -53,7 +53,10 @@ const FeedItem: FC<FeedItemProps> = ({ feed, showDescription = false }) => {
           <source src={feed.videoUrl} type="video/mp4" />
           Sorry, your browser doesn't support embedded videos.
         </video>
-        <VideoStatistics feed={feed} />
+        <VideoStatistics
+          className={'opacity-0 group-hover:opacity-100 transition-opacity'}
+          feed={feed}
+        />
       </div>
     </div>
   )

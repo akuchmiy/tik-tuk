@@ -5,14 +5,16 @@ import NumberService from '../../services/NumberService'
 
 interface VideoStatisticsProps {
   feed: Feed
+  className?: string
 }
 
-const VideoStatistics: FC<VideoStatisticsProps> = ({ feed }) => {
+const VideoStatistics: FC<VideoStatisticsProps> = ({
+  feed,
+  className = '',
+}) => {
   return (
     <div
-      className={
-        'flex flex-col gap-y-3.5 absolute bottom-5 right-2 text-black dark:text-gray-100 leading-5'
-      }
+      className={`flex flex-col gap-y-3.5 absolute bottom-5 right-2 text-black dark:text-gray-100 leading-5 ${className}`}
     >
       <button
         className={
