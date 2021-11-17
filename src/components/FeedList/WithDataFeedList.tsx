@@ -23,6 +23,7 @@ const WithDataFeedList: FC<WithDataProps> = ({
   const query = useQuery()
   const queryParam = useMemo(() => query.get('query'), [query])
   const [feedList, setFeedList] = useState<Feed[]>([])
+  const [isError, setIsError] = useState(false)
 
   const newTitle = useMemo(() => {
     if (username) return `${username}'s profile`
@@ -36,6 +37,7 @@ const WithDataFeedList: FC<WithDataProps> = ({
   }, [newTitle])
 
   useEffect(() => {
+    setIsError(false)
     setFeedList([])
     ;(async () => {
       const data = username
@@ -44,28 +46,35 @@ const WithDataFeedList: FC<WithDataProps> = ({
         ? await FeedService.getTrendingFeed()
         : await FeedService.getHashtagFeed(queryParam)
 
+      if (data.length === 0) setIsError(true)
       setFeedList(data)
     })()
   }, [username, queryParam, setFeedList])
 
   return (
     <>
-      <h1
-        className={
-          'text-black font-yuji dark:text-gray-100 text-2xl md:text-5xl pl-7 mb-6 md:mb-16'
-        }
-      >
-        {newTitle}
-      </h1>
-      {children}
-      <FeedList
-        showDescription={showDescription}
-        currentColumns={currentColumns}
-        minColumns={minColumns}
-        maxColumns={maxColumns}
-        className={'gap-4 gap-y-20'}
-        feedList={feedList}
-      />
+      {isError ? (
+        <h1 className={'text-center m-auto text-4xl'}>Something went wrong</h1>
+      ) : (
+        <>
+          <h1
+            className={
+              'text-black font-yuji dark:text-gray-100 text-2xl md:text-5xl pl-7 mb-6 md:mb-16'
+            }
+          >
+            {newTitle}
+          </h1>
+          {children}
+          <FeedList
+            showDescription={showDescription}
+            currentColumns={currentColumns}
+            minColumns={minColumns}
+            maxColumns={maxColumns}
+            className={'gap-4 gap-y-20'}
+            feedList={feedList}
+          />
+        </>
+      )}
     </>
   )
 }

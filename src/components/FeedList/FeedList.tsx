@@ -61,7 +61,11 @@ const FeedList: FC<FeedListProps> = memo(
       const observer = new IntersectionObserver(callback, {
         threshold: 0.5,
       })
-      videoRefs.current.forEach((videoElem) => observer.observe(videoElem))
+      videoRefs.current.forEach((videoElem) => {
+        if (videoElem instanceof Element) {
+          observer.observe(videoElem)
+        }
+      })
       return () => observer.disconnect()
     }, [feedList, columns])
 
